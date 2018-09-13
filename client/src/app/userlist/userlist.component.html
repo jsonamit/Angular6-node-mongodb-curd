@@ -1,0 +1,17 @@
+<h2 style="text-align:center">UserList</h2>
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Lastname</th>
+    <th>City</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user.name}}</td>
+    <td>{{user.lastname}}</td>
+    <td>{{user.city}}</td>
+    <td><button class="btn btn-primary" (click)="deleteuser(user._id)">Delete</button></td>
+    <td><button class="btn btn-primary" (click)="updateuser(user._id)">Update</button></td>
+  </tr>
+
+</table>
