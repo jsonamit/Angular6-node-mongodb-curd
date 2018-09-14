@@ -26,7 +26,7 @@ export class Userservices
   }
   deluser(id):Observable<any>
   {
-    return this.http.put(this.apiurl+'/deleteuser'+`/${id}`)
+    return this.http.delete(this.apiurl+'/deleteuser'+`/${id}`)
   }
 
 }

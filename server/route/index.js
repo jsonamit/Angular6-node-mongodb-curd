@@ -2,7 +2,6 @@ const express=require('express');
 var router=express.Router();
 var User=require('../model/user');
 
-
 router.get('/getuser',(req,res)=> {
     User.find((err,doc)=>{
         if(!err)
@@ -48,7 +47,7 @@ router.put('/updateuser:id',(req,res)=> {
         }
     });
 });
-router.put('/deleteuser/:id',(req,res)=>{
+router.delete('/deleteuser/:id',(req,res)=>{
     // if(!@ObjectId.$isValid(req.params.id))
     //     return res.status(400).send('no recoard given id :{$req.params.id}');
 
