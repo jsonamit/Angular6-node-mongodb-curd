@@ -7,11 +7,13 @@ import {routing} from './routing/routing';
 import {Userservices} from './services/userservices';
 import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { UserupdateComponent } from './userupdate/userupdate.component'
 @NgModule({
   declarations: [
     AppComponent,
-    UserlistComponent
+    UserlistComponent,
+    UserupdateComponent
   ],
   imports: [
     BrowserModule,

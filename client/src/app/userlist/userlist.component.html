@@ -1,17 +1,59 @@
-<h2 style="text-align:center">UserList</h2>
-<table class="table table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Lastname</th>
-    <th>City</th>
-    <th>Action</th>
-  </tr>
-  <tr *ngFor="let user of users">
-    <td>{{user.name}}</td>
-    <td>{{user.lastname}}</td>
-    <td>{{user.city}}</td>
-    <td><button class="btn btn-primary" (click)="deleteuser(user._id)">Delete</button></td>
-    <td><button class="btn btn-primary" (click)="updateuser(user._id)">Update</button></td>
-  </tr>
+<div class="container-fluid">
+  <div class="row" >
+    <div class="col-md-7">
+      <h2 style="text-align:center">UserList</h2>
+      <table class="table table-hover">
+        <tr>
+          <th>Name</th>
+          <th>Lastname</th>
+          <th>City</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{user.name}}</td>
+          <td>{{user.lastname}}</td>
+          <td>{{user.city}}</td>
+          <td>
+            <button class="btn btn-primary" (click)="deleteuser(user._id)">Delete</button>
+            <button style="margin-left: 5px;" class="btn btn-primary" (click)="updateuser(user._id)">Update</button>
+          </td>
 
-</table>
+        </tr>
+
+      </table>
+    </div>
+    <div class="col-md-5 jumbotron" [hidden]="!updatedisable">
+      <h2 style="text-align: center">User Update</h2>
+      <form class="form-horizontal" [formGroup]="addForm"  (submit)="updateuserByid()">
+        <div class="form-group" style="margin-top: 20px;margin-left: 65px;">
+          <div class="col-sm-10" >
+            <input type="email" formControlName="name" [(ngModel)]="name"  class="form-control"  />
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;margin-left: 65px;">
+          <div class="col-sm-10" >
+            <input type="email"  formControlName="lastname" [(ngModel)]="lastname" class="form-control"  />
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 20px;margin-left: 65px;">
+          <div class="col-sm-10" >
+            <input type="email" formControlName="city" [(ngModel)]="city" class="form-control"  />
+          </div>
+        </div>
+
+
+        <div class="form-group" style="margin-top: 35px;margin-left: 65px;">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit"  class="btn btn-primary btn-block" >Update</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+
+  </div>
+</div>
+
+
+

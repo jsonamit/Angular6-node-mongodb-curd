@@ -2,6 +2,7 @@ const express=require('express');
 var router=express.Router();
 var User=require('../model/user');
 
+
 router.get('/getuser',(req,res)=> {
     User.find((err,doc)=>{
         if(!err)
@@ -14,6 +15,20 @@ router.get('/getuser',(req,res)=> {
         }
     });
 });
+
+router.get('/getuserById/:id',(req,res)=> {
+    User.findById(req.params.id,(err,doc)=>{
+    if(!err)
+{
+    res.status = 200;
+    res.send(doc);
+}
+else {
+    console.log('error with connection db'+JSON.stringify(err));
+}
+});
+});
+
 router.post('/adduser',(req,res)=> {
    var user= new User({
        name:req.body.name,
@@ -30,14 +45,14 @@ router.post('/adduser',(req,res)=> {
          }
    });
 });
-router.put('/updateuser:id',(req,res)=> {
+router.post('/updateuserByid/:id',(req,res)=> {
 
     var user= new User({
         name:req.body.name,
         lastname:req.body.lastname,
         city:req.body.city
     });
-    User.findByIdAndUpdate(req.params.id,{$set:user},{new:true},(err,doc)=>{
+    User.findAndModify(req.params.id,{$set:user},{new:true},(err,doc)=>{
         if(!err)
         {
             res.send(doc);
